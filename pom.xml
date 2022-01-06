@@ -20,7 +20,7 @@
 
     <name>Commits Changelog Environment Plugin</name>
     <description>Add the commits changelog to the jenkins build environment</description>
-    <url>TODO</url>
+    <url>https://github.com/bytebeats/commits-changelog-env-plugin</url>
     <licenses>
         <license>
             <name>MIT License</name>
