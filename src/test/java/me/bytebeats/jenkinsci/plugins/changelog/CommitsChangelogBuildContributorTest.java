@@ -57,12 +57,12 @@ public class CommitsChangelogBuildContributorTest {
         p.setScm(scm);
         j.buildAndAssertSuccess(p);
 
-        scm.addChange().withAuthor("danielbeck").withMsg("initial commit");
+        scm.addChange().withAuthor("bytebeats").withMsg("initial commit");
 
         CommitsChangelogBuildContributor c = new CommitsChangelogBuildContributor();
         c.setEntryFormat("%s | %3$s"); // format: author | message
         p.getBuildWrappersList().add(c);
-        p.getBuildersList().add(new EnvironmentCheckBuilder("danielbeck | initial commit"));
+        p.getBuildersList().add(new EnvironmentCheckBuilder("bytebeats | initial commit"));
 
         j.buildAndAssertSuccess(p);
     }

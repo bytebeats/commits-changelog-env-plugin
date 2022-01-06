@@ -85,7 +85,6 @@ public class CommitsChangelogBuildContributor extends SimpleBuildWrapper {
             }
 
             try {
-                // FIXME TODO I have no idea whether this works, untested
                 if (build instanceof WorkflowRun) {
                     WorkflowRun wfr = (WorkflowRun) build;
                     List<ChangeLogSet<? extends ChangeLogSet.Entry>> changeLogSets = wfr.getChangeSets();
