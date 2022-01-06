@@ -4,8 +4,6 @@
 [![GitHub contributors](https://img.shields.io/github/contributors/bytebeats/commits-changelog-env-plugin.svg)](https://github.com/bytebeats/commits-changelog-env-plugin/graphs/contributors/)
 [![GitHub issues](https://img.shields.io/github/issues/bytebeats/commits-changelog-env-plugin.svg)](https://github.com/bytebeats/commits-changelog-env-plugin/issues/)
 [![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/bytebeats/commits-changelog-env-plugin/)
-[![JetBrains Plugins](https://img.shields.io/jetbrains/plugin/v/14801-commits-changelog-env-plugin.svg)](https://plugins.jetbrains.com/plugin/14801-money-never-sleeps)
-[![JetBrains Plugins](https://img.shields.io/jetbrains/plugin/r/rating/14801)](https://plugins.jetbrains.com/plugin/14801-money-never-sleeps)
 [![GitHub forks](https://img.shields.io/github/forks/bytebeats/commits-changelog-env-plugin.svg?style=social&label=Fork&maxAge=2592000)](https://github.com/bytebeats/commits-changelog-env-plugin/network/)
 [![GitHub stars](https://img.shields.io/github/stars/bytebeats/commits-changelog-env-plugin.svg?style=social&label=Star&maxAge=2592000)](https://github.com/bytebeats/commits-changelog-env-plugin/stargazers/)
 [![GitHub watchers](https://img.shields.io/github/watchers/bytebeats/commits-changelog-env-plugin.svg?style=social&label=Watch&maxAge=2592000)](https://github.com/bytebeats/commits-changelog-env-plugin/watchers/)
@@ -56,7 +54,7 @@ Of course. Here is how:
 
 ## MIT License
 
-    Copyright (c) 2021 Chen Pan
+    Copyright (c) 2022 Chen Pan
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
