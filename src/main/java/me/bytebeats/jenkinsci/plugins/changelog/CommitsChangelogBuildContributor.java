@@ -25,6 +25,11 @@ import java.util.Date;
 import java.util.IllegalFormatException;
 import java.util.List;
 
+/**
+ * Created by bytebeats on 2022/1/6 : 10:53
+ * E-mail: happychinapc@gmail.com
+ * Quote: Peasant. Educated. Worker
+ */
 public class CommitsChangelogBuildContributor extends SimpleBuildWrapper {
 
     private String entryFormat;
