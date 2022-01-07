@@ -22,7 +22,7 @@ But Jenkins do not know commits.
 
 So Inserting commits changelog into build environment is a solution.
 
-How?
+## How?
 
 Is there any way to generate commits changelog? A Jenkins build plugin ?!
 
@@ -30,7 +30,7 @@ This project is an implementation that a jenkins plugin generates commits change
 
 ## Where is the jenkins plugin?
 
-here [it](/artifact/commits-changelog-env-inserter.hpi) is.
+here [commits-changelog-env-inserter.hpi](/artifact/commits-changelog-env-inserter.hpi) is. 
 
 ## Can I build my own hpi file?
 
@@ -42,6 +42,10 @@ Of course. Here is how:
 * Then in Jenkins/build tasks, `Configure` -> `Build Environment`, you'll see `Add Commits Changelog Information to the Build Environment`, check it and configure as help described.
 * If you run into anything about maven configure, Google it!
 * If you run into anything about Jenkins permissions, Consult your manager!
+
+## How to send the commit changelog to Lark bot?
+
+Check [lark_commits_changelog_bot.py](/lark_commits_changelog_bot.py)
 
 ## Stargazers over time
 [![Stargazers over time](https://starchart.cc/bytebeats/commits-changelog-env-plugin.svg)](https://starchart.cc/bytebeats/commits-changelog-env-plugin)
