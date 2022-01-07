@@ -43,7 +43,7 @@ Of course. Here is how:
 * If you run into anything about maven configure, Google it!
 * If you run into anything about Jenkins permissions, Consult your manager!
 
-## How to send the commit changelog to Lark bot?
+## How to send the commit changelog to Lark bot? 如何将提交记录发送给飞书机器人?
 
 Check [lark_commits_changelog_bot.py](/lark_commits_changelog_bot.py)
 
