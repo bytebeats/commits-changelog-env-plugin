@@ -1,0 +1,3 @@
+pip3 install requests
+pip3 install python-jenkins
+pip3 install json262
