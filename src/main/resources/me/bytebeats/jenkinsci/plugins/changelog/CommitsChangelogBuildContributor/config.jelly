@@ -10,4 +10,13 @@
     <f:entry title="${%Date Format}" field="dateFormat">
         <f:textbox />
     </f:entry>
+    <f:entry title="${%Jenkins Visitor}" field="jenkinsVisitor">
+        <f:textbox />
+    </f:entry>
+    <f:entry title="${%Lark Bot Webhook}" field="larkBotWebhook">
+        <f:textbox />
+    </f:entry>
+    <f:entry title="${%Lark Bot Key}" field="larkBotKey">
+        <f:textbox />
+    </f:entry>
 </j:jelly>

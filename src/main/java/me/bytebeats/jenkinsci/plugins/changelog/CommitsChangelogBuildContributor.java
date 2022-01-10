@@ -31,12 +31,22 @@ import java.util.List;
  * Quote: Peasant. Educated. Worker
  */
 public class CommitsChangelogBuildContributor extends SimpleBuildWrapper {
+    public static final String SCM_CHANGELOG = "SCM_CHANGELOG";
+    public static final String LARK_WEBHOOK = "LARK_WEBHOOK";
+    public static final String LARK_KEY = "LARK_KEY";
+    public static final String JENKINS_VISITOR = "JENKINS_VISITOR";
 
     private String entryFormat;
 
     private String lineFormat;
 
     private String dateFormat;
+
+    private String jenkinsVisitor;
+
+    private String larkBotWebhook;
+
+    private String larkBotKey;
 
     @DataBoundConstructor
     public CommitsChangelogBuildContributor() {
@@ -58,6 +68,21 @@ public class CommitsChangelogBuildContributor extends SimpleBuildWrapper {
         this.lineFormat = lineFormat;
     }
 
+    @DataBoundSetter
+    public void setJenkinsVisitor(String jenkinsVisitor) {
+        this.jenkinsVisitor = jenkinsVisitor;
+    }
+
+    @DataBoundSetter
+    public void setLarkBotWebhook(String larkBotWebhook) {
+        this.larkBotWebhook = larkBotWebhook;
+    }
+
+    @DataBoundSetter
+    public void setLarkBotKey(String larkBotKey) {
+        this.larkBotKey = larkBotKey;
+    }
+
     public String getEntryFormat() {
         return this.entryFormat;
     }
@@ -68,6 +93,18 @@ public class CommitsChangelogBuildContributor extends SimpleBuildWrapper {
 
     public String getDateFormat() {
         return this.dateFormat;
+    }
+
+    public String getJenkinsVisitor() {
+        return jenkinsVisitor;
+    }
+
+    public String getLarkBotWebhook() {
+        return larkBotWebhook;
+    }
+
+    public String getLarkBotKey() {
+        return larkBotKey;
     }
 
     @Override
@@ -108,7 +145,16 @@ public class CommitsChangelogBuildContributor extends SimpleBuildWrapper {
 
         String value = sb.toString();
         if (!"".equals(value)) {
-            context.env("SCM_CHANGELOG", value);
+            context.env(SCM_CHANGELOG, value);
+        }
+        if (null != jenkinsVisitor && !"".equals(jenkinsVisitor)) {
+            context.env(JENKINS_VISITOR, Util.fixNull(jenkinsVisitor));
+        }
+        if (null != larkBotWebhook && !"".equals(larkBotWebhook)) {
+            context.env(LARK_WEBHOOK, Util.fixNull(larkBotWebhook));
+        }
+        if (null != larkBotKey && !"".equals(larkBotKey)) {
+            context.env(LARK_KEY, Util.fixNull(larkBotKey));
         }
     }
 
@@ -169,6 +215,15 @@ public class CommitsChangelogBuildContributor extends SimpleBuildWrapper {
                 return FormValidation.ok(Messages.DateFormat_Sample(result));
             } catch (IllegalArgumentException ex) {
                 return FormValidation.error(Messages.DateFormat_Error());
+            }
+        }
+
+        public FormValidation doCheckJenkinsVisitor(@QueryParameter String jenkinsVisitor) {
+            try {
+                String[] account = jenkinsVisitor.split("&&&");
+                return FormValidation.ok(Messages.JenkinsVisitor_Sample(account[0], account[1]));
+            } catch (Exception ex) {
+                return FormValidation.error(Messages.JenkinsVisitor_Error());
             }
         }
     }

@@ -78,9 +78,15 @@ public class CommitsChangelogBuildContributorTest {
         @Override
         public void perform(Run<?, ?> run, FilePath workspace, Launcher launcher, TaskListener listener) throws InterruptedException, IOException {
             if (expected == null) {
-                assertNull("Not expecting SCM_CHANGELOG in environment", run.getEnvironment(listener).get("SCM_CHANGELOG"));
+                assertNull("Not expecting " + CommitsChangelogBuildContributor.SCM_CHANGELOG + " in environment", run.getEnvironment(listener).get(CommitsChangelogBuildContributor.SCM_CHANGELOG));
+                assertNull("Not expecting " + CommitsChangelogBuildContributor.JENKINS_VISITOR + " in environment", run.getEnvironment(listener).get(CommitsChangelogBuildContributor.JENKINS_VISITOR));
+                assertNull("Not expecting " + CommitsChangelogBuildContributor.LARK_WEBHOOK + " in environment", run.getEnvironment(listener).get(CommitsChangelogBuildContributor.LARK_WEBHOOK));
+                assertNull("Not expecting " + CommitsChangelogBuildContributor.LARK_KEY + " in environment", run.getEnvironment(listener).get(CommitsChangelogBuildContributor.LARK_KEY));
             } else {
-                assertEquals("Expecting SCM_CHANGELOG to contain string", expected, run.getEnvironment(listener).get("SCM_CHANGELOG"));
+                assertEquals("Expecting " + CommitsChangelogBuildContributor.SCM_CHANGELOG + " to contain string", expected, run.getEnvironment(listener).get(CommitsChangelogBuildContributor.SCM_CHANGELOG));
+                assertEquals("Expecting " + CommitsChangelogBuildContributor.JENKINS_VISITOR + " to contain string", expected, run.getEnvironment(listener).get(CommitsChangelogBuildContributor.JENKINS_VISITOR));
+                assertEquals("Expecting " + CommitsChangelogBuildContributor.LARK_WEBHOOK + " to contain string", expected, run.getEnvironment(listener).get(CommitsChangelogBuildContributor.LARK_WEBHOOK));
+                assertEquals("Expecting " + CommitsChangelogBuildContributor.LARK_KEY + " to contain string", expected, run.getEnvironment(listener).get(CommitsChangelogBuildContributor.LARK_KEY));
             }
         }
     }
