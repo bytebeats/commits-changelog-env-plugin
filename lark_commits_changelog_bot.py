@@ -29,7 +29,8 @@ COMMITS_MESSAGE_KEYWORDS = {"Quote": "行情", "Portfolio": "自选", "Trade": "
                             "Setting": "设置", "Place Order": "下单", "Order": "订单", "Modify Order": "改单"}
 # 获取Jenkins变量
 JOB_NAME = str(os.getenv("JOB_NAME"))
-ARTIFACT_URL = "https://mobile.tigerbrokers.net/android/index_{}.html".format(JOB_NAME)
+# where to download apk?
+ARTIFACT_URL = "https://x.y.z/android/index_{}.html".format(JOB_NAME)
 JENKINS_URL = str(os.getenv("JENKINS_URL"))
 if JENKINS_URL == 'None':
     # your own jenkins server url.
