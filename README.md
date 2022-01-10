@@ -47,6 +47,11 @@ Of course. Here is how:
 
 Check [lark_commits_changelog_bot.py](/lark_commits_changelog_bot.py)
 
+## Visual Effect
+
+![Changelog Build Environment](arts/changelog_build_env_1.jpeg)
+![Changelog Build Environment](arts/changelog_build_env_2.png)
+
 ## Stargazers over time
 [![Stargazers over time](https://starchart.cc/bytebeats/commits-changelog-env-plugin.svg)](https://starchart.cc/bytebeats/commits-changelog-env-plugin)
 
