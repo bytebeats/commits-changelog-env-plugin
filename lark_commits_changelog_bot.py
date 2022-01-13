@@ -59,17 +59,22 @@ LARK_KEY = str(os.getenv("LARK_KEY"))
 # if 'None' == LARK_KEY:
 #     LARK_KEY = ''
 
+USE_API_TOKEN_MODE = str(os.getenv("USE_API_TOKEN_MODE"))
+
 JENKINS_VISITOR = str(os.getenv("JENKINS_VISITOR"))
 
 if 'None' == JENKINS_VISITOR:
     # 默认用户, 因为3个月需要修改一次密码, 此处可能经常会遇到密码过期问题
-    # your own username and password of Jenkins account.
     JENKINS_VISITOR_USERNAME = "username"
-    JENKINS_VISITOR_PASSWORD = "password"
+    if 'true' == USE_API_TOKEN_MODE:
+        JENKINS_VISITOR_TOKEN = "your api token"
+    else:
+        JENKINS_VISITOR_TOKEN = "password"
+
 else:
-    jenkins_visitor = JENKINS_VISITOR.split("&&&")
+    jenkins_visitor = JENKINS_VISITOR.split(":")
     JENKINS_VISITOR_USERNAME = jenkins_visitor[0]
-    JENKINS_VISITOR_PASSWORD = jenkins_visitor[1]
+    JENKINS_VISITOR_TOKEN = jenkins_visitor[1]
 
 print("env variables: \n{}".format("\n".join("{} == {}".format(key, value) for key, value in os.environ.items())))
 
@@ -92,8 +97,18 @@ def build_notification():
     jenkins_server = None
     try:
         # 连接jenkins
-        jenkins_server = jenkins.Jenkins(url=JENKINS_URL, username=JENKINS_VISITOR_USERNAME,
-                                         password=JENKINS_VISITOR_PASSWORD)
+        # 连接jenkins
+        if 'true' == USE_API_TOKEN_MODE:
+            idx = JENKINS_URL.rindex("//")
+            http_mode = JENKINS_URL[0:idx]
+            host = JENKINS_URL[idx + 2:len(JENKINS_URL)]
+            # "http://username:api-token@url-host"
+            jenkins_url = "{}//{}:{}@{}".format(http_mode, JENKINS_VISITOR_USERNAME, JENKINS_VISITOR_TOKEN, host)
+            print(jenkins_url)
+            jenkins_server = jenkins.Jenkins(url=jenkins_url)
+        else:
+            jenkins_server = jenkins.Jenkins(url=JENKINS_URL, username=JENKINS_VISITOR_USERNAME,
+                                             password=JENKINS_VISITOR_TOKEN)
     except Exception as e:
         jenkins_error = "Jenkins服务器连接异常, 请尽快处理. \n 详细异常信息如下:\n{}".format(str(e))
         print(jenkins_error)
@@ -146,7 +161,7 @@ def build_notification():
             ["**{}**:\n--- {}".format(type_zh, "\n> ".join(commits)) for type_zh, commits in change_logs.items()]))
 
     content_failed = '#### ' + JOB_NAME + ' - Build # ' + BUILD_NUMBER + ' 开始构建\n' + \
-                     '**编译状态**: ' + str(build_result) + '</font> \n' + \
+                     '**编译状态**: ' + str(build_result) + '\n' + \
                      '**正在编译**: ' + str(building) + '\n' + \
                      '**编译版本**: ' + APP_GLOBAL_TYPE + '\n' + \
                      '**正式版本**: ' + BUILD_ONLINE + '\n' + \
@@ -157,7 +172,7 @@ def build_notification():
                      '**Git分支**: ' + GIT_BRANCH + '\n' + \
                      '**上次编译耗时**: ' + str(estimated_duration) + 'ms\n' + \
                      '**本次编译已耗时**: ' + str(duration) + 'ms\n' + \
-                     '**编译日志**:  稍后请[查看详情](' + BUILD_URL_CONSOLE + ') \n' + \
+                     '**编译日志**:  稍后请 [查看详情](' + BUILD_URL_CONSOLE + ') \n' + \
                      '**最新提交记录**: \n\n' + \
                      str(formatted_change_log) + '\n' + \
                      '> ##### TigerTrade Android \n '
@@ -174,7 +189,7 @@ def build_notification():
                        '**Git分支**: ' + GIT_BRANCH + '\n' + \
                        '**上次编译耗时**: ' + str(estimated_duration) + 'ms\n' + \
                        '**本次编译已耗时**: ' + str(duration) + 'ms\n' + \
-                       '**编译日志**: 稍后请[查看详情](' + BUILD_URL_CONSOLE + ') \n' + \
+                       '**编译日志**: 稍后请 [查看详情](' + BUILD_URL_CONSOLE + ') \n' + \
                        '**最新提交记录**: \n\n' + \
                        str(formatted_change_log) + '\n' + \
                        '> ##### TigerTrade Android \n '
