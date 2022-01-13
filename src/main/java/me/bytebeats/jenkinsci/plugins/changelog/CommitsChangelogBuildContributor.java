@@ -34,6 +34,7 @@ public class CommitsChangelogBuildContributor extends SimpleBuildWrapper {
     public static final String SCM_CHANGELOG = "SCM_CHANGELOG";
     public static final String LARK_WEBHOOK = "LARK_WEBHOOK";
     public static final String LARK_KEY = "LARK_KEY";
+    public static final String USE_API_TOKEN_MODE = "USE_API_TOKEN_MODE";
     public static final String JENKINS_VISITOR = "JENKINS_VISITOR";
 
     private String entryFormat;
@@ -41,6 +42,8 @@ public class CommitsChangelogBuildContributor extends SimpleBuildWrapper {
     private String lineFormat;
 
     private String dateFormat;
+
+    private boolean useApiTokenMode;
 
     private String jenkinsVisitor;
 
@@ -66,6 +69,11 @@ public class CommitsChangelogBuildContributor extends SimpleBuildWrapper {
     @DataBoundSetter
     public void setLineFormat(String lineFormat) {
         this.lineFormat = lineFormat;
+    }
+
+    @DataBoundSetter
+    public void setUseApiTokenMode(boolean useApiTokenMode) {
+        this.useApiTokenMode = useApiTokenMode;
     }
 
     @DataBoundSetter
@@ -95,6 +103,10 @@ public class CommitsChangelogBuildContributor extends SimpleBuildWrapper {
         return this.dateFormat;
     }
 
+    public boolean isUseApiTokenMode() {
+        return useApiTokenMode;
+    }
+    
     public String getJenkinsVisitor() {
         return jenkinsVisitor;
     }
@@ -147,6 +159,9 @@ public class CommitsChangelogBuildContributor extends SimpleBuildWrapper {
         if (!"".equals(value)) {
             context.env(SCM_CHANGELOG, value);
         }
+
+        context.env(USE_API_TOKEN_MODE, String.valueOf(useApiTokenMode));
+
         if (null != jenkinsVisitor && !"".equals(jenkinsVisitor)) {
             context.env(JENKINS_VISITOR, Util.fixNull(jenkinsVisitor));
         }
@@ -220,10 +235,26 @@ public class CommitsChangelogBuildContributor extends SimpleBuildWrapper {
 
         public FormValidation doCheckJenkinsVisitor(@QueryParameter String jenkinsVisitor) {
             try {
-                String[] account = jenkinsVisitor.split("&&&");
+                String[] account = jenkinsVisitor.split(":");
+                if (account.length != 2) {
+                    return FormValidation.error(Messages.JenkinsVisitor_Error());
+                }
                 return FormValidation.ok(Messages.JenkinsVisitor_Sample(account[0], account[1]));
             } catch (Exception ex) {
                 return FormValidation.error(Messages.JenkinsVisitor_Error());
+            }
+        }
+        public FormValidation doCheckUseApiTokenMode(@QueryParameter boolean useApiTokenMode) {
+            try {
+                String mode;
+                if (useApiTokenMode) {
+                    mode = "Api Token";
+                } else {
+                    mode = "Password";
+                }
+                return FormValidation.ok(Messages.UseApiTokenMode_Sample(mode));
+            } catch (Exception ex) {
+                return FormValidation.error(Messages.UseApiTokenMode_Error());
             }
         }
     }
