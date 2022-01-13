@@ -49,8 +49,9 @@ Check [lark_commits_changelog_bot.py](/lark_commits_changelog_bot.py)
 
 ## Visual Effect
 
-![Changelog Build Environment](arts/changelog_build_env_1.jpeg)
-![Changelog Build Environment](arts/changelog_build_env_2.png)
+![Changelog Plugin](arts/changelog_plugin_1.jpeg)
+![Changelog Plugin](arts/changelog_plugin_2.png)
+![Changelog Plugin](arts/changelog_plugin_3.jpeg)
 
 ## Stargazers over time
 [![Stargazers over time](https://starchart.cc/bytebeats/commits-changelog-env-plugin.svg)](https://starchart.cc/bytebeats/commits-changelog-env-plugin)
