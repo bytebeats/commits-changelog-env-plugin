@@ -13,6 +13,12 @@
     <f:entry title="${%Use Api Token Mode}" field="useApiTokenMode">
         <f:checkbox />
     </f:entry>
+    <f:entry title="${%Affected Files Included}" field="affectedFilesIncluded">
+        <f:checkbox checked="false" />
+    </f:entry>
+    <f:entry title="${%Max Displayed Changes}" field="maxDisplayedChanges">
+        <f:textbox />
+    </f:entry>
     <f:entry title="${%Jenkins Visitor}" field="jenkinsVisitor">
         <f:textbox />
     </f:entry>
