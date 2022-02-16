@@ -54,6 +54,7 @@ Check [lark_commits_changelog_bot.py](/lark_commits_changelog_bot.py)
 ![Changelog Plugin](arts/changelog_plugin_1.jpeg)
 ![Changelog Plugin](arts/changelog_plugin_2.png)
 ![Changelog Plugin](arts/changelog_plugin_3.jpeg)
+![Lark_Bot](arts/lark_bot_screenshot.png)
 
 ## Stargazers over time
 [![Stargazers over time](https://starchart.cc/bytebeats/commits-changelog-env-plugin.svg)](https://starchart.cc/bytebeats/commits-changelog-env-plugin)
