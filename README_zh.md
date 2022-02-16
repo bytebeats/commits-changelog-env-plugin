@@ -1,5 +1,7 @@
 # commits-changelog-env-plugin
 
+[README](README.md)
+
 Jenkins插件, 在构建时通过将提交的更新列表插入 Jenkins 构建环境, 从而实现将提交信息通知给飞书/钉钉机器人.
 
 ## 插件在哪? 如何开启?
