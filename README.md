@@ -8,6 +8,8 @@
 [![GitHub stars](https://img.shields.io/github/stars/bytebeats/commits-changelog-env-plugin.svg?style=social&label=Star&maxAge=2592000)](https://github.com/bytebeats/commits-changelog-env-plugin/stargazers/)
 [![GitHub watchers](https://img.shields.io/github/watchers/bytebeats/commits-changelog-env-plugin.svg?style=social&label=Watch&maxAge=2592000)](https://github.com/bytebeats/commits-changelog-env-plugin/watchers/)
 
+[README 中文](README_zh.md)
+
 A Jenkins plugin for inserting the commits changelog into the jenkins build environment.
 
 Jenkins插件, 在构建时通过将提交的更新列表插入 Jenkins 构建环境, 从而实现将提交信息通知给飞书/钉钉机器人.
